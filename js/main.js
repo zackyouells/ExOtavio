@@ -74,7 +74,7 @@ for (let i = 0; i < agenda.length; i++) {
    var peso = agenda[i].peso;
    var altura = agenda[i].altura;
 
-   agendaResultado.innerHTML+="<tr><td>"+nome+"</td><td>"+endereco+"</td><td>"+telefone+"</td><td>"+peso+"</td><td>"+altura+"</td><td>"+"<button onclick='excluirPessoa("+id+")'><i class='fa fa-remove'></i></button>"+"</tr>";
+   agendaResultado.innerHTML+="<tr><td>"+nome+"</td><td>"+endereco+"</td><td>"+telefone+"</td><td>"+peso+"</td><td>"+altura+"</td><td>"+"<button onclick='MostrarPessoa("+id+")'><i class='fa  fa-cog'></i></button>"+"</td><td>"+"<button onclick='excluirPessoa("+id+")'><i class='fa fa-remove'></i></button>"+"</tr>";
      
     }
 
@@ -105,11 +105,16 @@ function MostrarPessoa(id){
 
     var agenda= JSON.parse(localStorage.getItem("agenda2"))
     
+    var modalTitle= document.getElementById("modalT").innerHTML;
+    var modalBody= document.getElementById("modalB").innerHTML;
+    console.log(modalTitle+" "+modalBody);
+
     for (let i = 0; i< agenda.length; i++) {
     if(agenda[i].id==id){
     console.log("modaling");
-    agenda[i].onclick = function(){document.getElementById("myModal").showModal();};
-      
+    agenda[i].onclick = function(){document.getElementById("myModal").showModal()};
+    modalTitle.innerHTML=id;
+    modalBody.innerHTML=agenda[i];  
 
 
     }
